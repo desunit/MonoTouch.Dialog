@@ -1,56 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <XIPlatform>tvOS</XIPlatform>
-    <ProjectGuid>{34FD9A81-12D2-44BB-897B-C051590A75AB}</ProjectGuid>
-    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <TargetFramework>net9.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>false</ImplicitUsings>
+    <DefineConstants>__IOS__;__UNIFIED__</DefineConstants>
+    <RootNamespace>Sample</RootNamespace>
+    <AssemblyName>Sample-Unified</AssemblyName>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <ApplicationId>com.sample.monotouchdialog</ApplicationId>
+    <ApplicationTitle>MonoTouch.Dialog Sample</ApplicationTitle>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Xamarin.iOS" />
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MonoTouch.Dialog\MonoTouch.Dialog-Unified.csproj">
-      <Project>{2B7FBE6D-3AD0-4805-9E09-4EBA09C0932C}</Project>
-      <Name>MonoTouch.Dialog-Unified</Name>
-    </ProjectReference>
-  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+    <UseInterpreter>true</UseInterpreter>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <TrimMode>full</TrimMode>
+  </PropertyGroup>
+
+  <!-- Info.plist -->
   <ItemGroup>
     <None Include="Info.plist" />
+    <None Remove="Info-tvOS.plist" />
   </ItemGroup>
+
+  <!-- Project reference to MonoTouch.Dialog -->
   <ItemGroup>
-    <Compile Include="Main.cs" />
-    <Compile Include="DemoElementApi.cs" />
-    <Compile Include="DemoReflectionApi.cs" />
-    <Compile Include="DemoDynamic.cs" />
-    <Compile Include="DemoAddRemove.cs" />
-    <Compile Include="DemoDate.cs" />
-    <Compile Include="DemoHeadersFooters.cs" />
-    <Compile Include="DemoLoadMore.cs" />
-    <Compile Include="DemoEditing.cs" />
-    <Compile Include="DemoOwnerDrawnElement.cs" />
-    <Compile Include="DemoStyled.cs" />
-    <Compile Include="DemoRefresh.cs" />
-    <Compile Include="DemoContainerStyle.cs" />
-    <Compile Include="DemoIndex.cs" />
-    <Compile Include="DemoEditingAdvanced.cs" />
-    <Compile Include="DemoInsets.cs" />
+    <ProjectReference Include="..\MonoTouch.Dialog\MonoTouch.Dialog-Unified.csproj" />
   </ItemGroup>
+
+  <!-- Content files -->
   <ItemGroup>
-    <Content Include="monodevelop-32.png" />
-    <Content Include="caltemplate.png" />
-    <Content Include="jakub-calendar.png" />
-    <Content Include="favorite.png" />
-    <Content Include="favorited.png" />
-    <Content Include="background.png" />
-    <Content Include="sample.json" />
+    <BundleResource Include="monodevelop-32.png" />
+    <BundleResource Include="caltemplate.png" />
+    <BundleResource Include="jakub-calendar.png" />
+    <BundleResource Include="favorite.png" />
+    <BundleResource Include="favorited.png" />
+    <BundleResource Include="background.png" />
+    <BundleResource Include="sample.json" />
   </ItemGroup>
-  <Import Project="Sample.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

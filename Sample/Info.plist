@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>MinimumOSVersion</key>
-	<string>5.1.1</string>
+	<string>13.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -12,11 +12,13 @@
 	<key>CFBundleName</key>
 	<string>Sample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sample.monotouchdialog</string>
+	<string>com.songtive.monotouchdialog</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
