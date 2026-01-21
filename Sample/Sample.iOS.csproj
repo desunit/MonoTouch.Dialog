@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>false</ImplicitUsings>
+    <DefineConstants>__IOS__;__UNIFIED__</DefineConstants>
+    <RootNamespace>Sample</RootNamespace>
+    <AssemblyName>Sample</AssemblyName>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <ApplicationId>com.sample.monotouchdialog</ApplicationId>
+    <ApplicationTitle>MonoTouch.Dialog Sample</ApplicationTitle>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+    <UseInterpreter>true</UseInterpreter>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <TrimMode>full</TrimMode>
+  </PropertyGroup>
+
+  <!-- Info.plist -->
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Remove="Info-tvOS.plist" />
+  </ItemGroup>
+
+  <!-- Project reference to MonoTouch.Dialog -->
+  <ItemGroup>
+    <ProjectReference Include="..\MonoTouch.Dialog\MonoTouch.Dialog.iOS.csproj" />
+  </ItemGroup>
+
+  <!-- Content files -->
+  <ItemGroup>
+    <BundleResource Include="monodevelop-32.png" />
+    <BundleResource Include="caltemplate.png" />
+    <BundleResource Include="jakub-calendar.png" />
+    <BundleResource Include="favorite.png" />
+    <BundleResource Include="favorited.png" />
+    <BundleResource Include="background.png" />
+    <BundleResource Include="sample.json" />
+  </ItemGroup>
+</Project>
