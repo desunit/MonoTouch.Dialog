@@ -493,10 +493,14 @@ namespace MonoTouch.Dialog
 		public void ActivateController (UIViewController controller)
 		{
 			dirty = true;
-			
+
 			var parent = ParentViewController;
-			var nav = parent as UINavigationController;
-			
+			// A dialog that is a CHILD of another controller (e.g. a tab/segment container) has that
+			// container as its parent, not the navigation controller. Without this fallback every
+			// nested RootElement opened as a modal sheet: no Back button, and swiping it down did not
+			// reload the row. NavigationController walks up the parent chain.
+			var nav = parent as UINavigationController ?? NavigationController;
+
 			// We can not push a nav controller into a nav controller
 			if (nav != null && !(controller is UINavigationController))
 				nav.PushViewController (controller, true);
